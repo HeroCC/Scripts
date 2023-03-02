@@ -1,10 +1,10 @@
 #!/bin/bash
 
-maxAge="30" # Max Time in Days to keep on local drive
-localMedia="$HOME/localMedia" # Location of Local Media
-movieDirName="Movies" # Name of Movies directory (inside $localMedia)
-tvDirName="TV"
-rcloneDest="SGDMedia" # Destination for rclone to move to 
+maxAge="${MAX_AGE:-30}" # Max Time in Days to keep on local drive
+localMedia="${LOCAL_MEDIA:-$HOME/localMedia}" # Location of Local Media
+movieDirName="${MOVIE_DIR:-Movies}" # Name of Movies directory (inside $localMedia)
+tvDirName="${TV_DIR:-TV}"
+rcloneDest="${REMOTE_DEST:-SGDMedia}" # Destination for rclone to move to 
 
 function main {
   cd $localMedia
