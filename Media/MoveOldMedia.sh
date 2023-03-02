@@ -13,7 +13,7 @@ function main {
   # Modified from http://askubuntu.com/a/80683/353466
   # Find files with media older than $maxAge days, then move it to remote
   echo "Starting Movie search..."
-  find $movieDirName -type d -ctime +$maxAge -print | xargs -I{} rclone move --delete-after "{}" "$rcloneDest:{}"
+  find $movieDirName -type d -ctime +$maxAge -print | xargs -I{} rclone move -vvv --delete-after "{}" "$rcloneDest:{}"
   echo "All Movies older than $maxAge moved to $rcloneDest"
   echo
   echo "Removing the following Empty Directories..."
@@ -29,7 +29,7 @@ function main {
 function moveTV {
   remoteLocation=${@%/*} # http://stackoverflow.com/a/15137779/1709894
   echo "Moving $@ to $rcloneDest:$remoteLocation"
-  rclone move --delete-after "$@" "$rcloneDest:$remoteLocation"
+  rclone move -vvv --delete-after "$@" "$rcloneDest:$remoteLocation"
   echo
   #xargs -I{} rclone move --delete-after "{}" "$rcloneDest:$(dirname {})"
 }
